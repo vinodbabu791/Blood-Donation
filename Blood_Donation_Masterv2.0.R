@@ -282,8 +282,8 @@ paste(slot(ROCauc,'y.name')[1],' is ',round(slot(ROCauc,'y.values')[[1]],4))
 ## step 8: Predicting values for testing dataset
 blood_pred_test <- predict(blood_train_model2,blood_test,type='response')
 blood_pred_test_df <- data.frame(ID = blood_test$ID,
-                                 'Made Donation in March 2007'=round(blood_pred_test,4))
-write.csv(x=blood_pred_test_df,file = 'C:/Users/vino/Desktop/Blood Donation/Testing_prediction.csv',row.names = FALSE)
+                                 'Made Donation in March 2007'=blood_pred_test)
+write.csv(x=blood_pred_test_df,file = 'C:/Users/vino/Desktop/DataScience/GitWit/Blood-Donation/Testing_prediction.csv',row.names = FALSE)
 
 ## step 9: Detaching Training data
 detach(blood_train)
