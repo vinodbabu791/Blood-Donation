@@ -121,31 +121,39 @@ summary(blood_train_model1)
 
 # Model 2:
 ## Response Variable: 'Made Donation in March 2007'
-## Predictor Variables: 'Months since Last Donation','Number of Donations',
+## Predictor Variables: 'Months since Last Donation',log of 'Number of Donations',
 ##                      Months since First Donation
-blood_train_model2 <- glm(y~x1+x2+x4,data=blood_train,family='binomial')
+blood_train_model2 <- glm(y~x1+log(x2)+x4,data=blood_train,family='binomial')
 summary(blood_train_model2)
 
 
-# Model 3:
+# Model 3
 ## Response Variable: 'Made Donation in March 2007'
-## Predictor Variables: 'Months since Last Donation',
-##                       'Total Volume Donated', Months since First Donation
-blood_train_model3 <- glm(y~x1+x3+x4,data=blood_train,family='binomial')
-summary(blood_train_model3)
+## Predictor Variables: 'Months since Last Donation','Number of Donations',
+##                      Months since First Donation
+blood_train_model3 <- glm(y~x1+x2+x4,data=blood_train,family='binomial')
+summary(blood_train_model2)
 
 
 # Model 4:
 ## Response Variable: 'Made Donation in March 2007'
+## Predictor Variables: 'Months since Last Donation',
+##                       'Total Volume Donated', Months since First Donation
+blood_train_model4 <- glm(y~x1+x3+x4,data=blood_train,family='binomial')
+summary(blood_train_model3)
+
+
+# Model 5:
+## Response Variable: 'Made Donation in March 2007'
 ## Predictor Variables: 'Months since Last Donation','Number of Donations'
-blood_train_model4 <- glm(y~x1+x2,data=blood_train,family='binomial')
+blood_train_model5 <- glm(y~x1+x2,data=blood_train,family='binomial')
 summary(blood_train_model4)
 
 
-# Model 5
+# Model 6
 ## Response Variable: 'Made Donation in March 2007'
 ## Predictor Variables: 'Total Volume Donated','Months since First Donation'
-blood_train_model5 <- glm(y~x3+x4,data=blood_train,family='binomial')
+blood_train_model6 <- glm(y~x3+x4,data=blood_train,family='binomial')
 summary(blood_train_model5)
 
 
@@ -159,7 +167,8 @@ model_list = list(model1=blood_train_model1,
                   model2=blood_train_model2,
                   model3=blood_train_model3,
                   model4=blood_train_model4,
-                  model5=blood_train_model5)
+                  model5=blood_train_model5,
+                  model6=blood_train_model6)
 
 
 #### step 5.2: comparing models using ANOVA
